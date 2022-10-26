@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { Link } from 'react-router-dom';
@@ -7,6 +7,8 @@ import './Register.css';
 
 const Register = () => {
     const { createUser } = useContext(AuthContext);
+
+    const [error, setError] = useState('');
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -21,7 +23,7 @@ const Register = () => {
                 const user = result.user;
                 form.reset();
             })
-            .catch(error => console.error(error))
+            .catch(error => setError(error.message))
     }
     return (
         <div className='form-div'>
@@ -45,6 +47,9 @@ const Register = () => {
                 </Form.Group>
                 <Form.Text className='d-block mb-3'>
                     Already have an account? <Link to='/login'>Login</Link>
+                </Form.Text>
+                <Form.Text className='d-block mb-3 text-danger'>
+                    {error}
                 </Form.Text>
                 <Button variant="primary" type="submit">
                     Register

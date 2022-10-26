@@ -1,14 +1,18 @@
 import React from 'react';
+import { useState } from 'react';
 import { useContext } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 
 const Login = () => {
     const { login } = useContext(AuthContext);
-
+    const [error, setError] = useState('');
     const navigate = useNavigate();
+    const location = useLocation();
+
+    const from = location.state?.from?.pathname || '/';
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -20,9 +24,9 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 form.reset();
-                navigate('/');
+                navigate(from, { replace: true });
             })
-            .catch(error => console.error(error))
+            .catch(error => setError(error.message))
     }
 
     return (
@@ -39,6 +43,9 @@ const Login = () => {
                 </Form.Group>
                 <Form.Text className='d-block mb-3'>
                     Don't have an account? <Link to='/register'>Register</Link>
+                </Form.Text>
+                <Form.Text className='d-block mb-3 text-danger'>
+                    {error}
                 </Form.Text>
                 <Button variant="primary" type="submit">
                     Login

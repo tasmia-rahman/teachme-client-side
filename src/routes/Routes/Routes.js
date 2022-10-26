@@ -1,14 +1,15 @@
 import { createBrowserRouter } from "react-router-dom";
-import Main from "../layout/Main";
-import Home from "../pages/Home/Home/Home";
-import Courses from "../pages/Courses/Courses/Courses";
-import Blog from "../pages/Blog/Blog/Blog";
-import FAQ from "../pages/FAQ/FAQ/FAQ";
-import Error from "../pages/Error/Error/Error";
-import CourseDetail from "../pages/Courses/CourseDetail/CourseDetail";
-import Checkout from "../pages/Checkout/Checkout/Checkout";
-import Register from "../pages/Register/Register/Register";
-import Login from "../pages/Login/Login/Login";
+import Main from "../../layout/Main";
+import Home from "../../pages/Home/Home/Home";
+import Courses from "../../pages/Courses/Courses/Courses";
+import Blog from "../../pages/Blog/Blog/Blog";
+import FAQ from "../../pages/FAQ/FAQ/FAQ";
+import Error from "../../pages/Error/Error/Error";
+import CourseDetail from "../../pages/Courses/CourseDetail/CourseDetail";
+import Checkout from "../../pages/Checkout/Checkout/Checkout";
+import Register from "../../pages/Register/Register/Register";
+import Login from "../../pages/Login/Login/Login";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 export const routes = createBrowserRouter([
     {
@@ -35,7 +36,7 @@ export const routes = createBrowserRouter([
             },
             {
                 path: '/checkout/:id',
-                element: <Checkout></Checkout>,
+                element: <PrivateRoute><Checkout></Checkout></PrivateRoute>,
                 loader: ({ params }) => fetch(`http://localhost:5000/courses/${params.id}`)
             },
             {
