@@ -1,0 +1,13 @@
+.banner img {
+    width: 1200px;
+    height: 500px;
+    position: relative;
+}
+
+.banner p {
+    position: absolute;
+    top: 50%;
+    left: 30%;
+    color: white;
+    font-size: 40px;
+}

@@ -4,6 +4,7 @@ import Home from "../pages/Home/Home/Home";
 import Courses from "../pages/Courses/Courses/Courses";
 import Blog from "../pages/Blog/Blog/Blog";
 import FAQ from "../pages/FAQ/FAQ/FAQ";
+import Error from "../pages/Error/Error/Error";
 
 export const routes = createBrowserRouter([
     {
@@ -31,5 +32,9 @@ export const routes = createBrowserRouter([
                 element: <FAQ></FAQ>
             }
         ]
+    },
+    {
+        path: '*',
+        element: <Error></Error>
     }
 ])
