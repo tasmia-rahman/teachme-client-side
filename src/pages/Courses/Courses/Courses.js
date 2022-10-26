@@ -9,7 +9,7 @@ const Courses = () => {
     const courses = useLoaderData();
 
     return (
-        <Container className='courses'>
+        <Container className='courses text-center'>
             <ListGroup>
                 {
                     courses.map(course => <ListGroup.Item><Link to={`/courses/${course.id}`}>{course.name}</Link></ListGroup.Item>)

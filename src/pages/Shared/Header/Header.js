@@ -1,12 +1,15 @@
 import React from 'react';
+import { useContext } from 'react';
 import { useState } from 'react';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 import './Header.css';
 
 const Header = () => {
+    const { user } = useContext(AuthContext);
     const [toggleTheme, setToggleTheme] = useState(false);
     return (
         <Navbar collapseOnSelect expand="lg" bg="white" variant="light">
@@ -23,6 +26,10 @@ const Header = () => {
                         <Link to='/blog' className='nav-link'>Blog</Link>
                         <Link to='/faq' className='nav-link'>FAQ</Link>
                         <button className={`theme-btn ${toggleTheme ? 'light' : 'dark'}`} onClick={() => setToggleTheme(!toggleTheme)}>{toggleTheme ? 'Light' : 'Dark'}</button>
+                    </Nav>
+                    <Nav className="ms-auto">
+                        <Link to='/register' className='nav-link'>Register</Link>
+                        <Link to='/login' className='nav-link'>Login</Link>
                     </Nav>
                 </Navbar.Collapse>
             </Container>

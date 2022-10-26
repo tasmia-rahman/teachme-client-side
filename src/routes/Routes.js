@@ -7,6 +7,8 @@ import FAQ from "../pages/FAQ/FAQ/FAQ";
 import Error from "../pages/Error/Error/Error";
 import CourseDetail from "../pages/Courses/CourseDetail/CourseDetail";
 import Checkout from "../pages/Checkout/Checkout/Checkout";
+import Register from "../pages/Register/Register/Register";
+import Login from "../pages/Login/Login/Login";
 
 export const routes = createBrowserRouter([
     {
@@ -43,6 +45,14 @@ export const routes = createBrowserRouter([
             {
                 path: '/faq',
                 element: <FAQ></FAQ>
+            },
+            {
+                path: '/register',
+                element: <Register></Register>
+            },
+            {
+                path: '/login',
+                element: <Login></Login>
             }
         ]
     },
