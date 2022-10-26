@@ -21,3 +21,12 @@
     font-size: 30px;
     cursor: pointer;
 }
+
+.checkout-link {
+    color: white;
+    text-decoration: none;
+}
+
+.checkout-link:hover {
+    color: black;
+}
