@@ -3,21 +3,25 @@ import { useLoaderData } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import './CourseDetail.css';
-import { Container } from 'react-bootstrap';
 import { FaCloudDownloadAlt } from "react-icons/fa";
+import Pdf from "react-to-pdf";
+
+const ref = React.createRef();
 
 const CourseDetail = () => {
     const course = useLoaderData();
 
     return (
-        <Container className='mb-5'>
+        <div className='course-detail-container mb-5'>
             <Card className="text-center">
                 <Card.Header className='d-flex justify-content-between align-items-center'>
                     <h3 className='course-name'>{course.name}</h3>
-                    <FaCloudDownloadAlt className='download-icon'></FaCloudDownloadAlt>
+                    <Pdf targetRef={ref} filename="course-detail.pdf">
+                        {({ toPdf }) => <button onClick={toPdf}><FaCloudDownloadAlt className='download-icon'></FaCloudDownloadAlt></button>}
+                    </Pdf>
                 </Card.Header>
-                <Card.Img variant="top" src={course.img} className='course-img' />
-                <Card.Body>
+                <Card.Img src={course.img} className='course-img' />
+                <Card.Body ref={ref}>
                     <Card.Text className='course-description'>
                         {course.description}
                     </Card.Text>
@@ -26,7 +30,7 @@ const CourseDetail = () => {
                     <Button variant="primary">Get premium access</Button>
                 </Card.Footer>
             </Card>
-        </Container>
+        </div>
     );
 };
 
