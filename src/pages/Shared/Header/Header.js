@@ -4,8 +4,10 @@ import { useState } from 'react';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import Image from 'react-bootstrap/Image'
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
+import { HiUser } from "react-icons/hi";
 import './Header.css';
 
 const Header = () => {
@@ -40,8 +42,18 @@ const Header = () => {
                         {
                             user?.uid ?
                                 <>
-                                    <span>{user?.displayName}</span>
-                                    <Link className='nav-link' onClick={handleLogOut}>Log out</Link>
+                                    {
+                                        user?.photoURL ?
+                                            <>
+                                                <Image title={user?.displayName} style={{ height: '40px' }} src={user?.photoURL} roundedCircle></Image>
+                                                <Link className='nav-link' onClick={handleLogOut}>Log out</Link>
+                                            </>
+                                            :
+                                            <>
+                                                <HiUser style={{ marginTop: '12px', fontSize: '20px' }}></HiUser>
+                                                <Link className='nav-link' onClick={handleLogOut}>Log out</Link>
+                                            </>
+                                    }
                                 </>
                                 :
                                 <>

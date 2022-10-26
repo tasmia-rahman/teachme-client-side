@@ -52,7 +52,7 @@ const Register = () => {
                 <Form.Text className='d-block mb-3 text-danger'>
                     {error}
                 </Form.Text>
-                <Button variant="primary" type="submit">
+                <Button style={{ width: '500px' }} variant="primary" type="submit">
                     Register
                 </Button>
             </Form>

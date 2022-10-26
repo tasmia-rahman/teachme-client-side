@@ -5,9 +5,10 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
+import { GoogleAuthProvider } from "firebase/auth";
 
 const Login = () => {
-    const { login } = useContext(AuthContext);
+    const { login, setLoading, googleProviderLogin } = useContext(AuthContext);
     const [error, setError] = useState('');
     const navigate = useNavigate();
     const location = useLocation();
@@ -25,6 +26,18 @@ const Login = () => {
                 const user = result.user;
                 form.reset();
                 navigate(from, { replace: true });
+            })
+            .catch(error => setError(error.message))
+            .finally(() => {
+                setLoading(false);
+            })
+    }
+    const provider = new GoogleAuthProvider();
+
+    const handleGoogleSignIn = () => {
+        googleProviderLogin(provider)
+            .then(result => {
+                const user = result.user;
             })
             .catch(error => setError(error.message))
     }
@@ -47,10 +60,16 @@ const Login = () => {
                 <Form.Text className='d-block mb-3 text-danger'>
                     {error}
                 </Form.Text>
-                <Button variant="primary" type="submit">
+                <Button style={{ width: '500px', marginBottom: '15px' }} variant="primary" type="submit">
                     Login
                 </Button>
             </Form>
+            <Button onClick={handleGoogleSignIn} style={{ width: '500px', marginBottom: '15px' }} variant="success">
+                Google
+            </Button>
+            <Button style={{ width: '500px', marginBottom: '15px' }} variant="warning">
+                GitHub
+            </Button>
         </div>
     );
 };
