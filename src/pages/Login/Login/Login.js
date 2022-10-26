@@ -5,10 +5,10 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
-import { GoogleAuthProvider } from "firebase/auth";
+import { GoogleAuthProvider, GithubAuthProvider } from "firebase/auth";
 
 const Login = () => {
-    const { login, setLoading, googleProviderLogin } = useContext(AuthContext);
+    const { login, setLoading, providerLogin } = useContext(AuthContext);
     const [error, setError] = useState('');
     const navigate = useNavigate();
     const location = useLocation();
@@ -32,15 +32,27 @@ const Login = () => {
                 setLoading(false);
             })
     }
-    const provider = new GoogleAuthProvider();
+    const googleProvider = new GoogleAuthProvider();
+    const githubProvider = new GithubAuthProvider();
 
     const handleGoogleSignIn = () => {
-        googleProviderLogin(provider)
+        providerLogin(googleProvider)
             .then(result => {
                 const user = result.user;
+                navigate(from, { replace: true });
             })
             .catch(error => setError(error.message))
     }
+
+    const handleGithubSignIn = () => {
+        providerLogin(githubProvider)
+            .then(result => {
+                const user = result.user;
+                navigate(from, { replace: true });
+            })
+            .catch(error => setError(error.message))
+    }
+
 
     return (
         <div className='form-div'>
@@ -67,7 +79,7 @@ const Login = () => {
             <Button onClick={handleGoogleSignIn} style={{ width: '500px', marginBottom: '15px' }} variant="success">
                 Google
             </Button>
-            <Button style={{ width: '500px', marginBottom: '15px' }} variant="warning">
+            <Button onClick={handleGithubSignIn} style={{ width: '500px', marginBottom: '15px' }} variant="warning">
                 GitHub
             </Button>
         </div>

@@ -10,7 +10,7 @@ const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
 
-    const googleProviderLogin = (provider) => {
+    const providerLogin = (provider) => {
         return signInWithPopup(auth, provider);
     }
 
@@ -42,7 +42,7 @@ const AuthProvider = ({ children }) => {
     }, [])
 
 
-    const authInfo = { user, loading, setLoading, googleProviderLogin, createUser, login, logout };
+    const authInfo = { user, loading, setLoading, providerLogin, createUser, login, logout };
 
     return (
         <AuthContext.Provider value={authInfo}>
