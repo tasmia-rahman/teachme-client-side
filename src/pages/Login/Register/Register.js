@@ -7,8 +7,8 @@ import './Register.css';
 
 const Register = () => {
     const { createUser } = useContext(AuthContext);
-
     const [error, setError] = useState('');
+    const [success, setSuccess] = useState(false);
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -22,6 +22,7 @@ const Register = () => {
             .then(result => {
                 const user = result.user;
                 form.reset();
+                setSuccess(true);
             })
             .catch(error => setError(error.message))
     }
@@ -55,6 +56,11 @@ const Register = () => {
                     Register
                 </Button>
             </Form>
+            <h3 className='d-block m-3 text-success text-center'>
+                {
+                    success ? 'Registered successfully !!!' : ''
+                }
+            </h3>
         </div>
     );
 };

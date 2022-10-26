@@ -6,14 +6,15 @@ import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
 const PrivateRoute = ({ children }) => {
     const { user, loading } = useContext(AuthContext);
+    console.log(!user);
     const location = useLocation();
 
     if (loading) {
-        return <Spinner animation="border" />;
+        return <div className='text-center mt-5'><Spinner animation="border" /></div>
     }
 
     if (!user) {
-        <Navigate to='/login' state={{ from: location }} replace></Navigate>
+        return <Navigate to='/login' state={{ from: location }} replace></Navigate>
     }
 
     return children;

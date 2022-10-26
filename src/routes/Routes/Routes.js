@@ -7,7 +7,7 @@ import FAQ from "../../pages/FAQ/FAQ/FAQ";
 import Error from "../../pages/Error/Error/Error";
 import CourseDetail from "../../pages/Courses/CourseDetail/CourseDetail";
 import Checkout from "../../pages/Checkout/Checkout/Checkout";
-import Register from "../../pages/Register/Register/Register";
+import Register from "../../pages/Login/Register/Register";
 import Login from "../../pages/Login/Login/Login";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
