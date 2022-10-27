@@ -18,12 +18,15 @@
 <li>There is also a blog page where blogs are shown and a FAQ page.</li>
 </ul>
 
+<br/>
 The following technologies are used for this website:
 
-### React
-### React Bootstrap
-### Node
-### Express
-### Firebase
-### Vercel
+<ul>
+<li>React</li>
+<li>React Bootstrap</li>
+<li>Node</li>
+<li>Express</li>
+<li>Firebase</li>
+<li>Vercel</li>
+</ul>
 
