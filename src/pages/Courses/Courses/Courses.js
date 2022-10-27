@@ -9,18 +9,21 @@ const Courses = () => {
     const courses = useLoaderData();
 
     return (
-        <Container className='courses text-center'>
-            <ListGroup>
-                {
-                    courses.map(course => <ListGroup.Item><Link to={`/courses/${course.id}`}>{course.name}</Link></ListGroup.Item>)
-                }
-            </ListGroup>
-            <Container className='courses-container mb-5'>
-                {
-                    courses.map(course => <Course key={course.id} course={course}></Course>)
-                }
+        <div>
+            <h3 className='text-center my-5'>Courses</h3>
+            <Container className='courses text-center'>
+                <ListGroup>
+                    {
+                        courses.map(course => <ListGroup.Item><Link to={`/courses/${course.id}`}>{course.name}</Link></ListGroup.Item>)
+                    }
+                </ListGroup>
+                <Container className='courses-container mb-5'>
+                    {
+                        courses.map(course => <Course key={course.id} course={course}></Course>)
+                    }
+                </Container>
             </Container>
-        </Container>
+        </div>
     );
 };
 
