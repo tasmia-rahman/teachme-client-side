@@ -27,18 +27,18 @@ const Header = () => {
             <Container>
                 <Navbar.Brand href="#home">
                     <img className='logo' src='https://cdn.dribbble.com/users/60166/screenshots/13967952/media/9ea8447026fdcadf66196aa38fcc0207.jpg?compress=1&resize=400x300&vertical=top' alt="" />
-                    TeachMe
+                    Teach<span className='blue-color'>Me</span>
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
-                    <Nav className="ms-auto">
+                    <Nav className="ms-auto header-links">
                         <Link to='/home' className='nav-link'>Home</Link>
                         <Link to='/courses' className='nav-link'>Courses</Link>
                         <Link to='/blog' className='nav-link'>Blog</Link>
                         <Link to='/faq' className='nav-link'>FAQ</Link>
                         <button className={`theme-btn ${toggleTheme ? 'light' : 'dark'}`} onClick={() => setToggleTheme(!toggleTheme)}>{toggleTheme ? 'Light' : 'Dark'}</button>
                     </Nav>
-                    <Nav className="ms-auto">
+                    <Nav className="ms-auto header-links">
                         {
                             user?.uid ?
                                 <>

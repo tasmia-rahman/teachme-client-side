@@ -10,11 +10,11 @@ const Courses = () => {
 
     return (
         <div>
-            <h3 className='text-center my-5'>Courses</h3>
+            <h3 className='text-center my-5 blue-color'>Courses</h3>
             <Container className='courses text-center'>
                 <ListGroup>
                     {
-                        courses.map(course => <ListGroup.Item><Link to={`/courses/${course.id}`}>{course.name}</Link></ListGroup.Item>)
+                        courses.map(course => <ListGroup.Item><Link className='blue-color' to={`/courses/${course.id}`}>{course.name}</Link></ListGroup.Item>)
                     }
                 </ListGroup>
                 <Container className='courses-container mb-5'>

@@ -1,5 +1,5 @@
 .course-detail-container {
-    width: 800px;
+    /* width: 800px; */
     margin: 0 auto;
 }
 
@@ -7,10 +7,6 @@
     width: 300px !important;
     height: 300px;
     margin: 10px auto;
-}
-
-.course-name {
-    margin-left: 365px;
 }
 
 .course-description {
