@@ -1,0 +1,28 @@
+.footer {
+    margin-top: 80px;
+    padding: 50px 0;
+    background-color: #161616;
+    color: white;
+}
+
+hr {
+    width: 80%;
+    margin: 35px auto;
+}
+
+
+.footer-links a {
+    color: #b9b9b9;
+}
+
+@media only screen and (max-width: 768px) {
+    .footer-links {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    hr {
+        width: 100%;
+    }
+}
